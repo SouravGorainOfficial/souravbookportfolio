@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+:root {
+    --bg-color: #081b29;
+    --main-color: #00abf0;
+    --text-color: #333;
+    --second-text-color: #555;
+    --white-color: #fff;
+    --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+    --pages-color: linear-gradient(90deg, #fff, #ddd);
+    --border: .125rem solid #00abf0;
+    --box-shadow: 0 0 .6rem rgba(0, 0, 0, .2);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+.wrapper {
+    position: relative;
+    width: 58rem;
+    height: 38rem;
+    padding: 1.2rem;
+    animation: show-animate 2s forwards;
+    perspective: 250rem;
+}
+
+
+@keyframes show-animate{
+    0%,30%{
+        opacity: 0;
+        transform: rotate(-20deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+.cover {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--cover-color);
+    box-shadow: var(--box-shadow);
+    border-top-left-radius: .6rem;
+    border-bottom-left-radius: .6rem;
+    transform-origin: right;
+    top: 0;
+    left: 0;
+}
+
+.cover.cover-left {
+    z-index: -1;
+}
+
+.cover.cover-right{
+    z-index: 100;
+    transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+}
+
+.cover.cover-right.turn {
+    transform: rotateY(180deg);
+}
+
+.book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.book .book-page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--pages-color);
+    box-shadow: 0 0 .6rem rgb(0, 0, 0, .1);
+    padding: 2rem;
+}
+
+.portfolio-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.portfolio-page img {
+    width: 160px;
+    height: 180px;
+    border-radius: 50%;
+    border: .25rem solid var(--main-color);
+    margin-bottom: .8rem;
+}
+
+.portfolio-page h1 {
+    font-size: 2rem;
+    /* line-height: 1; */
+    padding: .2rem 0;
+
+}
+
+.portfolio-page h3 {
+    font-size: 1.3rem;
+    color: var(--main-color);
+    padding: .2rem 0;
+}
+
+.portfolio-page .social-media {
+    margin: .6rem 0 .8rem;
+}
+
+.portfolio-page .social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: var(--border);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    padding: 1rem;
+    transition: .5s;
+}
+
+.portfolio-page .social-media a:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+}
+
+.portfolio-page p {
+    text-align: justify;
+    line-height: 1.05rem;
+}
+
+.portfolio-page .btn-box {
+    margin-top: .7rem;
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 2.2rem;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: .8rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: .5rem 1rem;
+    transition: .5s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2):hover {
+    background: var(--main-color);
+    color: var(--white-color);
+}
+
+.book-page.page-right {
+    position: absolute;
+    right: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+}
+
+.book-page.page-right.turn {
+    transform: rotateY(-180deg);
+}
+
+.book-page .page-front,
+.book-page .page-back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--pages-color);
+    height: 100%;
+    width: 100%;
+    padding: 1.5rem 2rem;
+}
+
+.book-page .page-front {
+    transform: rotateY(0deg) translateZ(1px);
+}
+
+.book-page .page-back {
+    transform: rotateY(180deg) translateZ(1px);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.workeduc-box {
+    border-left: var(--border);
+    margin: 1.3rem 0;
+}
+
+.workeduc-box .workeduc-conntant {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.workeduc-box .workeduc-conntant::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: -7px;
+    width: .8rem;
+    height: .8rem;
+    border-radius: 50%;
+    background: var(--main-color);
+}
+
+.workeduc-conntant .year {
+    color: var(--main-color);
+}
+
+.workeduc-conntant .year i {
+    margin-right: .4rem;
+    padding-bottom: .4rem;
+}
+
+.workeduc-conntant h3 {
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-bottom: .3rem;
+}
+
+.page-number {
+    /* padding: 1rem;
+    text-align: center; */
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.next-perv-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.9rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    color: var(--second-text-color);
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    transition: .5s;
+    font-size: 1.7rem;
+}
+
+.next-perv-btn:hover {
+    color: var(--main-color);
+}
+
+.next-perv-btn.back {
+    left: 1.5rem;
+}
+
+.services-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.services-box .service-contant {
+    flex: 1 1 10rem;
+    border: var(--border);
+    padding: .8rem .5rem 1.1rem;
+    border-radius: .5rem;
+    text-align: center;
+}
+
+.services-box .service-contant:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.services-box .service-contant .btn {
+    margin-bottom: .1rem;
+}
+
+.services-box .service-contant i {
+    font-size: 1.6rem;
+    color: var(--main-color);
+}
+
+.services-box .service-contant h3 {
+    font-size: 1.1rem;
+}
+
+.services-box .service-contant p {
+    margin-top: .2rem;
+    text-align: justify;
+}
+
+.services-box .service-contant .btn {
+    width: 8rem;
+    height: 2.2rem;
+}
+
+.skills-box {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1.3rem;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.skills-box .skill {
+    width: 10rem;
+    text-align: center;
+    border: var(--border);
+    border-radius: .5rem;
+    padding: 1.3rem .7rem;
+    transition: .3s ease;
+}
+
+.skills-box .skill:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.skills-box .skill i {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+.skills-box .skill h3 {
+    font-size: 1.3rem;
+}
+
+.portfolio-box {
+    width: 100%;
+    height: auto;
+    border: var(--border);
+    border-radius: .5rem;
+    text-align: center;
+    padding: 1rem .7rem;
+    transition: .3s ease;
+}
+
+.portfolio-box:hover {
+    box-shadow: var(--box-shadow)
+}
+
+.portfolio-img {
+    display: flex;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: 1s ease;
+    overflow: hidden;
+}
+
+.portfolio-img:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.portfolio-box img {
+    width: 100%;
+    height: 14rem;
+    margin-bottom: .7rem;
+}
+
+.portfolio-box .info-box h3 {
+    font-size: 2rem;
+    margin: .3rem 0;
+}
+
+.contact-box {
+    text-align: center;
+
+}
+
+
+.contact-box .field {
+    width: 100%;
+    background: transparent;
+    border: var(--border);
+    border-radius: .3rem;
+    padding: .8rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.contact-box .field::placeholder {
+    color: var(--text-color);
+}
+
+.contact-box textarea {
+    resize: none;
+    height: 14rem;
+}
+
+.contact-box .btn {
+    width: 10rem;
+    height: 2.5rem;
+}
+
+.contact-box .btn:hover {
+    cursor: pointer;
+}
